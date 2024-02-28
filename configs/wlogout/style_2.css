@@ -1,0 +1,82 @@
+* {
+    background-image: none;
+    font-size: 20px;
+}
+
+@import "$HOME/.config/waybar/theme.css";
+
+window {
+    background-color: rgba(0,0,0,0.5);
+}
+
+button {
+    color: white;
+    background-color: @main-bg;
+    outline-style: none;
+    border: none;
+    border-width: 0px;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: 10%;
+    border-radius: 0px;
+    box-shadow: none;
+    text-shadow: none;
+    animation: gradient_f 20s ease-in infinite;
+}
+
+button:focus {
+    background-color: @wb-act-bg;
+    background-size: 20%;
+}
+
+button:hover {
+    background-color: @wb-hvr-bg;
+    background-size: 25%;
+    border-radius: 50px;
+    animation: gradient_f 20s ease-in infinite;
+    transition: all 0.3s cubic-bezier(.55,0.0,.28,1.682);
+}
+
+button:hover#lock {
+    border-radius: 50px 50px 0px 50px;
+    margin : 288px 0px 0px 1100px;
+}
+
+button:hover#logout {
+    border-radius: 50px 0px 50px 50px;
+    margin : 0px 0px 288px 1100px;
+}
+
+button:hover#shutdown {
+    border-radius: 50px 50px 50px 0px;
+    margin : 288px 1100px 0px 0px;
+}
+
+button:hover#reboot {
+    border-radius: 0px 50px 50px 50px;
+    margin : 0px 1100px 288px 0px;
+}
+
+#lock {
+    background-image: image(url("$HOME/.config/wlogout/icons/lock_${BtnCol}.png"));
+    border-radius: 80px 0px 0px 0px;
+    margin : 360px 0px 0px 1204px;
+}
+
+#logout {
+    background-image: image(url("$HOME/.config/wlogout/icons/logout_${BtnCol}.png"));
+    border-radius: 0px 0px 0px 80px;
+    margin : 0px 0px 360px 1204px;
+}
+
+#shutdown {
+    background-image: image(url("$HOME/.config/wlogout/icons/shutdown_${BtnCol}.png"));
+    border-radius: 0px 80px 0px 0px;
+    margin : 360px 1204px 0px 0px;
+}
+
+#reboot {
+    background-image: image(url("$HOME/.config/wlogout/icons/reboot_${BtnCol}.png"));
+    border-radius: 0px 0px 80px 0px;
+    margin : 0px 1204px 360px 0px;
+}
