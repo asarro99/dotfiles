@@ -4,21 +4,21 @@ return {
 	-- event = { "BufReadPre", "BufNewFile" }, -- to enable uncomment this
 	dependencies = {
 		"jay-babu/mason-null-ls.nvim",
+		"williamboman/mason.nvim",
 	},
 	config = function()
 		local mason_null_ls = require("mason-null-ls")
-		local null_ls = require("null-ls")
-		local null_ls_utils = require("null-ls.utils")
-
 		mason_null_ls.setup({
 			ensure_installed = {
+				"eslint_d", -- js linter
 				"prettier", -- prettier formatter
 				"stylua", -- lua formatter
-				"eslint_d", -- js linter
 			},
 		})
 
 		-- for conciseness
+		local null_ls = require("null-ls")
+		local null_ls_utils = require("null-ls.utils")
 		local formatting = null_ls.builtins.formatting -- to setup formatters
 		local diagnostics = null_ls.builtins.diagnostics -- to setup linters
 
@@ -36,6 +36,12 @@ return {
 				formatting.prettier.with({
 					extra_filetypes = { "svelte" },
 				}), -- js/ts formatter
+				formatting.latexindent.with({
+					extra_args = {
+						"-l",
+						"~/.indentconfig.yaml",
+					},
+				}),
 				formatting.stylua, -- lua formatter
 				diagnostics.eslint_d.with({ -- js/ts linter
 					condition = function(utils)

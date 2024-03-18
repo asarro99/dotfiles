@@ -27,14 +27,14 @@ return {
 		mason_lspconfig.setup({
 			-- list of servers for mason to install
 			ensure_installed = {
-				"tsserver",
-				"html",
-				"cssls",
-				"svelte",
-				"lua_ls",
-				"emmet_ls",
-				"dockerls",
-				"docker_compose_language_service",
+				"html", -- for html server
+				"cssls", -- for css server
+				"tsserver", -- for typescript server
+				"svelte", -- for svelte server
+				"lua_ls", -- for lua server
+				"dockerls", -- for docker
+				"docker_compose_language_service", -- for docker
+				"rust_analyzer", -- for rust
 			},
 			-- auto-install configured servers (with lspconfig)
 			automatic_installation = true, -- not the same as ensure_installed
@@ -42,9 +42,9 @@ return {
 
 		mason_tool_installer.setup({
 			ensure_installed = {
-				"prettier",
-				"stylua",
-				"eslint_d",
+				"eslint_d", -- js linter
+				"prettier", -- prettier formatter
+				"stylua", -- lua formatter
 			},
 		})
 	end,

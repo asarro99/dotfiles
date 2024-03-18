@@ -8,12 +8,12 @@ return {
 	config = function()
 		-- import lspconfig plugin
 		local lspconfig = require("lspconfig")
+
 		-- import cmp-nvim-lsp plugin
 		local cmp_nvim_lsp = require("cmp_nvim_lsp")
+
 		local keymap = vim.keymap -- for conciseness
-
 		local opts = { noremap = true, silent = true }
-
 		local on_attach = function(client, bufnr)
 			opts.buffer = bufnr
 
@@ -133,6 +133,18 @@ return {
 		lspconfig["dockerls"].setup({
 			capabilities = capabilities,
 			on_attach = on_attach,
+		})
+
+		lspconfig["rust_analyzer"].setup({
+			capabilities = capabilities,
+			on_attach = on_attach,
+			filetypes = { "rust" },
+			root_dir = lspconfig.util.root_pattern("Cargo.toml"),
+			settings = {
+				["rust-analyzer"] = {
+					cargo = { allFeatures = true },
+				},
+			},
 		})
 	end,
 }
