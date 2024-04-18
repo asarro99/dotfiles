@@ -29,5 +29,9 @@ if [ -d $path/configs/.config/waybar ]; then
     install_symlink ~/.config/waybar $path/configs/.config/waybar ~/.config
 fi
 
+if [ -e $path/configs/.config/starship.toml ]; then
+    install_symlink ~/.config/starship.toml $path/configs/.config/starship.toml ~/.config
+fi
+
 echo ":: Symbolic links created."
 echo

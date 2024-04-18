@@ -21,37 +21,37 @@ echo "Version: $version"
 echo "Antonio Sarro $year"
 echo -e "${RESET}"
 
-# # Load required
-# source .install/required.sh
+# Load required
+source .install/required.sh
 
 # # Ask for confirmation
-# if gum confirm "Do you want to continue?"; then
-#     echo "Ok, let's go!"
-# else
-#     echo "Ok, see you next time!"
-#     exit 0
-# fi
+if gum confirm "Do you want to continue?"; then
+    echo "Ok, let's go!"
+else
+    echo "Ok, see you next time!"
+    exit 0
+fi
 
-# # Check if paru is installed
-# source .install/paru.sh
+# Check if paru is installed
+source .install/paru.sh
 
-# # Upadate system before install all the packages
-# source .install/updatesys.sh
+# Upadate system before install all the packages
+source .install/updatesys.sh
 
-# # Prepare the system for installation
-# source .install/preparation.sh
+# Prepare the system for installation
+source .install/preparation.sh
 
-# # Install general packages
-# source .install/packages/general.sh
+# Install general packages
+source .install/packages/general.sh
 
-# # Install hyprland packages
-# source .install/packages/hyprland.sh
+# Install hyprland packages
+source .install/packages/hyprland.sh
 
-# # Symlink dotfiles
-# source .install/dotfiles.sh
+# Symlink dotfiles
+source .install/dotfiles.sh
 
 # Symlink gtk
-# source .install/gtk.sh
+source .install/gtk.sh
 
 # Symlink zsh
 source .install/zsh.sh
