@@ -1,0 +1,2 @@
+#### ---- fast-syntax-highlighting ------------------------
+[ -f $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh ] && source $ZSH/plugins/fast-syntax-highlighting/fast-syntax-highlighting.plugin.zsh
