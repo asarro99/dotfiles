@@ -4,3 +4,6 @@
 [submodule "configs/.config/zsh/plugins/zsh-autosuggestions"]
 	path = configs/.config/zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions
+[submodule "configs/.config/zsh/plugins/fzf-git.sh"]
+	path = configs/.config/zsh/plugins/fzf-git.sh
+	url = https://github.com/junegunn/fzf-git.sh

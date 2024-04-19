@@ -1,7 +1,6 @@
 packagesPacman=(
     "gum"
     "figlet"
-    "htop"
     "btop"
     "kitty"
     "nano"

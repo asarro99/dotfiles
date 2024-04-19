@@ -47,6 +47,9 @@ source .install/packages/general.sh
 # Install hyprland packages
 source .install/packages/hyprland.sh
 
+# Install coding tools
+source .install/coding.sh
+
 # Symlink dotfiles
 source .install/dotfiles.sh
 

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # list of monitor commands available
-commands=("htop" "btop" "top")
+commands=("btop" "top")
 
 # determinate terminal to use
 terminal=$(cat "$HOME"/.config/hypr/hyprland.conf | grep ^'$term' | cut -d "=" -f2)

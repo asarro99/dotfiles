@@ -33,5 +33,9 @@ if [ -e $path/configs/.config/starship.toml ]; then
     install_symlink ~/.config/starship.toml $path/configs/.config/starship.toml ~/.config
 fi
 
+if [ -e $path/configs/.gitconfig ]; then
+    install_symlink ~/.gitconfig $path/configs/.gitconfig ~/
+fi
+
 echo ":: Symbolic links created."
 echo
