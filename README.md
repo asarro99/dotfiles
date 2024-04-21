@@ -122,7 +122,7 @@ options ... iommu=pt vfio-pci.ids=1002:73df,1002:ab28
 
 We need to add `vfio_pci`, `vfio`, `vfio_iommu_type1` to `/etc/mkinitcpio.conf`:
 
-```sh
+```
 MODULES=(... vfio_pci vfio vfio_iommu_type1 ...)
 BINARIES=(...)
 FILES=(...)
@@ -139,7 +139,7 @@ Now we can check if if `vfio-pci` is loaded properly with this command:
 ```sh
 lspci -nnk
 ```
-```sh
+```
 0a:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT/6750 XT / 6800M/6850M XT] [1002:73df] (rev c1)
 	Subsystem: Advanced Micro Devices, Inc. [AMD/ATI] Device [1002:0e36]
 	Kernel driver in use: vfio-pci
@@ -149,4 +149,9 @@ lspci -nnk
 	Kernel driver in use: vfio-pci
 	Kernel modules: snd_hda_intel
 0b:00.0 VGA compatible controller [0300]
+```
+
+### Qemu packages
+```
+sudo pacman -S qemu-desktop libvirt edk2-ovmf virt-manager vde2 nftables dnsmasq
 ```
