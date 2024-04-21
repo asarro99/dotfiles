@@ -8,6 +8,7 @@ packagesPacman=(
     "neofetch"
     "neovim"
     "pavucontrol"
+    "partitionmanager"
     "ttf-cascadia-code-nerd"
     "ttf-jetbrains-mono-nerd"
     "papirus-icon-theme"

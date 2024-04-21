@@ -60,6 +60,7 @@ This section categorizes the packages in this dotfiles repository for easier und
 * `figlet` (text banner generator): Creates ASCII art banners for text.
 * `neofetch` (system information displayer): Shows detailed information about your system.
 * `amdgpu_top-bin` (AMD GPU monitoring): Monitors performance and utilization of your AMD graphics card.
+* `partitionmanager` (KDE Partition Manager): Utility that allows to manage disks, partitions and file systems.
 
 ### Fonts
 
@@ -78,3 +79,74 @@ This section categorizes the packages in this dotfiles repository for easier und
 * `Warehouse` (Flatpak manager): Manages flatpak installations.
 * `Flatseal` (Flatpak permission manager): Manages permissions granted to Flatpak applications.
 * `Telegram` (messaging app): The popular messaging platform.
+
+## KVM
+
+### PCI passthrough via OVMF
+
+**Before starting this step remove sddm or any login manager because it gives problems with wayland/hyprland**
+
+Following the [Arch Linux PCI Passthrough Guide](https://wiki.archlinux.org/title/PCI_passthrough_via_OVMF), we need to enable `IOMMU` and then check if it's enabled using the following code:
+
+```sh
+sudo dmesg | grep -i -e DMAR -e IOMMU
+```
+
+After this, we need to list and check where our PCI devices are mapped to IOMMU groups.
+
+```sh
+shopt -s nullglob
+for g in $(find /sys/kernel/iommu_groups/* -maxdepth 0 -type d | sort -V); do
+    echo "IOMMU Group ${g##*/}:"
+    for d in $g/devices/*; do
+        echo -e "\t$(lspci -nns ${d##*/})"
+    done;
+done;
+```
+
+**In my case:**
+
+```sh
+IOMMU Group 19:
+    0a:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT/6750 XT / 6800M/6850M XT] [1002:73df] (rev c1)
+IOMMU Group 20:
+    0a:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21/23 HDMI/DP Audio Controller [1002:ab28]
+```
+
+Now we have to isolate the GPU, but first, we need to load `vfio-pci` before the GPU drivers have a chance to bind to the card.
+
+We have to edit the `/boot/loader/entries/<id>.conf` with the ids of pci we want to isolate:
+```
+options ... iommu=pt vfio-pci.ids=1002:73df,1002:ab28
+```
+
+We need to add `vfio_pci`, `vfio`, `vfio_iommu_type1` to `/etc/mkinitcpio.conf`:
+
+```sh
+MODULES=(... vfio_pci vfio vfio_iommu_type1 ...)
+BINARIES=(...)
+FILES=(...)
+HOOKS=(... modconf ...)
+```
+
+After this, we have to regenerate the `initramfs` with this command and reboot:
+
+```sh
+sudo mkinitcpio -P
+```
+
+Now we can check if if `vfio-pci` is loaded properly with this command:
+```sh
+lspci -nnk
+```
+```sh
+0a:00.0 VGA compatible controller [0300]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 22 [Radeon RX 6700/6700 XT/6750 XT / 6800M/6850M XT] [1002:73df] (rev c1)
+	Subsystem: Advanced Micro Devices, Inc. [AMD/ATI] Device [1002:0e36]
+	Kernel driver in use: vfio-pci
+	Kernel modules: amdgpu
+0a:00.1 Audio device [0403]: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21/23 HDMI/DP Audio Controller [1002:ab28]
+	Subsystem: Advanced Micro Devices, Inc. [AMD/ATI] Navi 21/23 HDMI/DP Audio Controller [1002:ab28]
+	Kernel driver in use: vfio-pci
+	Kernel modules: snd_hda_intel
+0b:00.0 VGA compatible controller [0300]
+```
