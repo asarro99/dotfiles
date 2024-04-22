@@ -32,8 +32,8 @@ else
     exit 0
 fi
 
-# Check if paru is installed
-source .install/paru.sh
+# Check if yay is installed
+source .install/yay.sh
 
 # Upadate system before install all the packages
 source .install/updatesys.sh

@@ -20,15 +20,15 @@ install_packages_pacman() {
     fi
 }
 
-install_packages_paru() {
+install_packages_yay() {
     local packages_to_install=()
 
     for package in "$@"; do
-        if ! command -v pacman >/dev/null 2>&1; then
-            echo "pacman is not installed"
+        if ! command -v yay >/dev/null 2>&1; then
+            echo "yay is not installed"
             return 1
         fi
-        if pacman -Qq "$package" >/dev/null 2>&1; then
+        if yay -Qq "$package" >/dev/null 2>&1; then
             echo "$package is already installed"
             continue
         fi
@@ -36,7 +36,7 @@ install_packages_paru() {
     done
 
     if [ ${#packages_to_install[@]} -gt 0 ]; then
-        sudo pacman -S --noconfirm "${packages_to_install[@]}"
+        yay -S --noconfirm "${packages_to_install[@]}"
     fi
 }
 

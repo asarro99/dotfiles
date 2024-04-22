@@ -4,6 +4,9 @@ export ZSH=$HOME/.config/zsh
 # Default editor
 export EDITOR=nvim
 
+# Path
+export PATH=$HOME/bin:$PATH
+
 # Source config
 [[ -f $ZSH/config/aliases.zsh ]] && source $ZSH/config/aliases.zsh
 [[ -f $ZSH/config/history.zsh ]] && source $ZSH/config/history.zsh

@@ -4,4 +4,4 @@ echo -e "${NONE}"
 
 echo -e "${BLUE}Checking if coding required packages are installed...${RESET}"
 install_packages_pacman "go"
-install_packages_paru "nvm"
+install_packages_yay "nvm"

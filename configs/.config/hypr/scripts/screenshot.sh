@@ -22,7 +22,7 @@ rofi_cmd() {
 		-p "$prompt" \
 		-mesg "$mesg" \
 		-markup-rows \
-		-theme "/home/ohhbigg/Projects/dotfiles/configs/rofi/screenshot.rasi"
+		-theme "~/.config/rofi/screenshot.rasi"
 }
 
 # Pass variables to rofi dmenu

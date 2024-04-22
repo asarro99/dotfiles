@@ -11,11 +11,11 @@ packagesPacman=(
     "xdg-desktop-portal-hyprland"
 )
 
-packagesParu=(
+packagesYay=(
     "rofi-lbonn-wayland"
     "grimblast-git"
 )
 
 echo "Install only missing hyprland packages..."
 install_packages_pacman "${packagesPacman[@]}";
-install_packages_paru "${packagesParu[@]}";
+install_packages_yay "${packagesYay[@]}";

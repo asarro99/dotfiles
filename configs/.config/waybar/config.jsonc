@@ -24,13 +24,13 @@
             "custom/r_end",
             "custom/padd"
         ],
-        "modules-right": [
-            "custom/padd",
-            "custom/l_end",
-            "custom/windowsvm",
-            "custom/r_end",
-            "custom/padd"
-        ],
+        // "modules-right": [
+        //     "custom/padd",
+        //     "custom/l_end",
+        //     "custom/windowsvm",
+        //     "custom/r_end",
+        //     "custom/padd"
+        // ],
         "custom/windowsvm": {
             "format": "",
             "on-click": "~/.config/waybar/scripts/win_gaming.sh",
@@ -75,8 +75,8 @@
                 "on-click-right": "mode",
                 "format": {
                     "months": "<span color='#ffead3'><b>{}</b></span>",
-                    "weekdays": "<span color='#8464c6'><b>{}</b></span>",
-                    "today": "<span color='#8464c6'><b>{}</b></span>"
+                    "weekdays": "<span color='#de6341'><b>{}</b></span>",
+                    "today": "<span color='#de6341'><b>{}</b></span>"
                 }
             },
             "actions": {
@@ -126,9 +126,9 @@
             "custom/padd"
         ],
         "modules-right": [
-            "custom/l_end",
-            "custom/wireguard_home",
-            "custom/r_end",
+            // "custom/l_end",
+            // "custom/wireguard_home",
+            // "custom/r_end",
             "custom/l_end",
             "network",
             "bluetooth",

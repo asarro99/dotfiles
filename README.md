@@ -1,6 +1,6 @@
 # Dotfiles
 
-This repository manages my development environment configuration files, including customizations for the Hyprland window manager on Wayland. It also includes development tools, utilities, fonts, themes, and Flatpak applications. 
+This repository manages my development environment configuration files, including customizations for the Hyprland window manager on Wayland. It also includes development tools, utilities, fonts and themes.
 
 ## Breakdown
 
@@ -9,7 +9,7 @@ This section categorizes the packages in this dotfiles repository for easier und
 ### System Essentials
 
 * **Package Management:**
-    * `paru` (AUR helper): Manages installation and updates of software packages.
+    * `yay` (AUR helper): Manages installation and updates of software packages.
 * **Development Languages:**
     * `rustup` (Rust toolchain manager): Installs and manages different versions of the Rust programming language compiler.
     * `go` (Programming language): Open-source programming language created at Google.
@@ -61,6 +61,9 @@ This section categorizes the packages in this dotfiles repository for easier und
 * `neofetch` (system information displayer): Shows detailed information about your system.
 * `amdgpu_top-bin` (AMD GPU monitoring): Monitors performance and utilization of your AMD graphics card.
 * `partitionmanager` (KDE Partition Manager): Utility that allows to manage disks, partitions and file systems.
+* `pacman-contrib`
+* `imagemagik`
+* `reflector`
 
 ### Fonts
 
@@ -70,15 +73,7 @@ This section categorizes the packages in this dotfiles repository for easier und
 ### Themes
 
 * `papirus-icon-theme` (icon theme): Provides a visually appealing icon theme for your desktop.
-* `bibata-cursor-theme` (cursor theme): Customizes the appearance of your mouse cursor.
-
-### Flatpak Apps
-
-* `Firefox` (web browser): The popular web browser.
-* `Vesktop` (discord desktop client): Custom Discord App aiming to give you better performance and improve linux support.
-* `Warehouse` (Flatpak manager): Manages flatpak installations.
-* `Flatseal` (Flatpak permission manager): Manages permissions granted to Flatpak applications.
-* `Telegram` (messaging app): The popular messaging platform.
+* `bibata-cursor-theme-bin` (cursor theme): Customizes the appearance of your mouse cursor.
 
 ## KVM
 
